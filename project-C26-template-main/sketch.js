@@ -54,7 +54,18 @@ function draw() {
   for (var i = 0; i < playerArrows.length; i++) {
     if (playerArrows[i] !== undefined) {
       playerArrows[i].display();
+      var board1collision = Matter.SAT.collides(
+        board1.body,
+        playerArrows[i].body
+      );
+      var board2collision = Matter.SAT.collides(
+        board2.body,
+        playerArrows[i].body
+      );
     }
+  }
+  if(board1collision.collided || board2collision.collided){
+    console.log("Collided");
   }
   board1.display();
   board2.display();
